@@ -67,6 +67,12 @@ p, li {
   float:right;
   width:60%;
   margin:0;
+  text-align:right;
+}
+
+.announcement.tiny a {
+  color:#666;
+  font-size:0.5em;
 }
 
 .slides-cont {

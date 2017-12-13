@@ -83,27 +83,16 @@ $(document).ready(function() {
    * Update the timer GUI.
    */
   function updateTimer(remaining) {
-    hours = Math.floor(remaining / 3600);
-    minutes = Math.floor(remaining / 60) % 60;
-    seconds = remaining % 60;
+    var today = new Date();
 
-    $('.time .hours').html(pad(hours, 2));
-    $('.time .minutes').html(pad(minutes, 2));
-    $('.time .seconds').html(pad(seconds, 2));
-
-    for (var i = 0; i < ANNOUNCEMENTS.length; i++) {
-      announcement = ANNOUNCEMENTS[i];
-      if (remaining == announcement.remaining()) {
-        $('.announcement').html(announcement.message());
-      }
-    }
+    $('.time .hours').html(pad(today.getHours(), 2));
+    $('.time .minutes').html(pad(today.getMinutes(), 2));
   }
 
   /**
    * Once the start exam button has been clicked, start the timer.
    */
   $('.start-exam').on('click', function() {
-    timer.start();
     $(this).html('Resume');
   });
 
@@ -120,6 +109,7 @@ $(document).ready(function() {
   timer.addHook(function(seconds) {
     updateTimer(DURATION - seconds);
   });
+  timer.start();
 });
 
 /**
