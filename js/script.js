@@ -101,12 +101,6 @@ $(document).ready(function() {
    */
   var timer = new Timer(DURATION);
   timer.addHook(function(seconds) {
-    if (DURATION - seconds == 0) {
-      examFinished();
-      timer.stop();
-    }
-  });
-  timer.addHook(function(seconds) {
     updateTimer(DURATION - seconds);
   });
   timer.start();
